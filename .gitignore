@@ -1,0 +1,133 @@
+# README.md
+# ELL Studio Docker Setup
+
+A containerized setup for running ELL Studio with Docker, featuring both interactive shell access and normal operation modes.
+
+## Prerequisites
+
+- Docker
+- Docker Compose
+- Python 3.11 (for local development)
+
+## Project Structure
+
+```
+.
+├── Dockerfile
+├── docker-compose.yml
+├── entrypoint.sh
+├── requirements.txt
+├── .env
+└── logdir/
+```
+
+## Quick Start
+
+1. Clone the repository:
+```bash
+git clone
+cd
+```
+
+2. Create a `.env` file with your configuration:
+```bash
+cp .env.example .env  # Create from template if available
+```
+
+3. Start ELL Studio:
+```bash
+docker-compose up
+```
+
+4. Access ELL Studio at: `http://localhost:5555`
+
+## Development
+
+### Interactive Shell Access
+
+To get a bash shell in the container:
+```bash
+docker-compose run --service-ports ell-studio bash
+```
+
+### Building the Image
+
+To rebuild the Docker image:
+```bash
+docker-compose build
+```
+
+### Logs
+
+Logs are persisted in the `logdir` directory.
+
+## Configuration
+
+- Environment variables can be set in the `.env` file
+- Docker configuration can be modified in `docker-compose.yml`
+- Python dependencies should be listed in `requirements.txt`
+
+## Troubleshooting
+
+If you encounter permission issues with the logdir:
+```bash
+chmod 777 logdir
+```
+
+---
+
+# .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Logs
+logdir/
+*.log
+
+# Environment
+.env
+.venv
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Docker
+.docker/
+
+# Project specific
+node_modules/
+.pytest_cache/
+.coverage
+
+*.save
+
+repo-to-text*
+
+!examples/prompt-guard/dataset.json
