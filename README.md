@@ -12,8 +12,8 @@ This tool calculates the cosine similarity between two text strings using OpenAI
 1. **Clone this repository**
 
 ```bash
-git clone <repository-url>
-cd text-similarity
+git clone git@github.com:adorosario/compute-cosine-similarity-embeddings.git
+cd compute-cosine-similarity-embeddings
 ```
 
 2. **Set up your OpenAI API key**
@@ -31,19 +31,16 @@ OPENAI_API_KEY=your_openai_api_key_here
 3. **Run with Docker Compose**
 
 ```bash
-docker-compose run similarity "This is the first string" "This is the second string"
+docker-compose up -d
+docker-compose exec app bash
+python similarity.py "This is the first string" "This is the second string"
 ```
 
 ## Usage Examples
 
 Compare two phrases:
 ```bash
-docker-compose run similarity "The quick brown fox jumps over the lazy dog" "A fast auburn fox leaps above the sleepy canine"
-```
-
-Compare technical concepts:
-```bash
-docker-compose run similarity "Machine learning algorithms" "Neural networks and deep learning"
+pythong similarity.py "The quick brown fox jumps over the lazy dog" "A fast auburn fox leaps above the sleepy canine"
 ```
 
 ## Running without Docker
